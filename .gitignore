@@ -132,3 +132,4 @@ dmypy.json
 #folders
 images/
 labelImg-master/
+models/
