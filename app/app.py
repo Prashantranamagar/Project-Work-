@@ -18,13 +18,13 @@ def index():
         upload_file.save(path_save)
         # print(upload_file)
         # image = yolo_predictions(path_save,filename)
-        image = yolo_predictions(path_save)
+        image, liscense_text = yolo_predictions(path_save)
         
         # text = OCR(path_save,filename)
         text = 'abc'
         
 
-        return render_template('index.html',upload=True,upload_image=filename,text=text)
+        return render_template('index.html',upload=True,upload_image=image,text=liscense_text)
 
     return render_template('index.html',upload=False)
 
