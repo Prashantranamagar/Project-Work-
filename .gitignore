@@ -128,7 +128,13 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-#folder
+
+
+#files
 images/
 labelImg-master/
 models/
+test_images/
+Model/
+data_images/
+
