@@ -132,3 +132,6 @@ dmypy.json
 images/
 labelImg-master/
 models/
+Model/
+data_images/
+test_images/

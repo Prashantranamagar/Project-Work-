@@ -122,14 +122,23 @@ $(document).ready(function() {
 					<div class="col-lg-2 col-sm-6 col-8 order-2 order-lg-3">
 								<div class="d-flex justify-content-end mb-3 mb-lg-0">
 									<div class="widget-header">
+										{% if 'username' in session %}
+											<div>
+												<i>Welcome! {{ session['username'] }}</i>
+											</div>
+											<div>
+												<a href="{{ url_for('logout') }}"> Logout</a>
+											</div>
+										{% else %}
+											<div>
+												<i>Nameste!</i>
+											</div>
+											<div>
+												<a href="/register">Sign in</a> <span class="dark-transp"> | </span>
+												<a href="/login"> Login</a>
+											</div>	
+										{% endif %}
 										
-										
-										<div>
-											<a href="/signin">Sign in</a> <span class="dark-transp"> | </span>
-											<a href="/register"> Register</a>
-										</div>	
-										
-											
 									</div>
 								</div> <!-- widgets-wrap.// -->
 							</div> <!-- col.// -->
