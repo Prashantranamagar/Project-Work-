@@ -80,7 +80,7 @@ def non_maximum_supression(input_image,detections):
 
 
 
-def drawings(image,boxes_np,confidences_np,index):
+def drawings(image,boxes_np,confidences_np,index, filename):
     # drawings
     for ind in index:
         x,y,w,h =  boxes_np[ind]
@@ -95,20 +95,22 @@ def drawings(image,boxes_np,confidences_np,index):
 
 
         cv2.putText(image,conf_text,(x,y-10),cv2.FONT_HERSHEY_SIMPLEX,0.7,(255,255,255),1)
-        cv2.putText(image,license_text,(x,y+h+27),cv2.FONT_HERSHEY_SIMPLEX,0.7,(0,255,0),1)
+        img = cv2.putText(image,license_text,(x,y+h+27),cv2.FONT_HERSHEY_SIMPLEX,0.7,(0,255,0),1)
+        cv2.imwrite('./static/predict/{}'.format(filename),img)
+    
 
-    return image
+    return  license_text
 
 # predictions
-def yolo_predictions(path):
+def yolo_predictions(path, filename):
     
     ## step-1: detections
     input_image, detections = get_detections(path, net)
     ## step-2: NMS
     boxes_np, confidences_np, index = non_maximum_supression(input_image, detections)
     ## step-3: Drawings
-    result_img = drawings(input_image,boxes_np,confidences_np,index)
-    return result_img
+    license_text = drawings(input_image,boxes_np,confidences_np,index, filename)
+    return license_text
 
 
 def extract_text(image,bbox):
