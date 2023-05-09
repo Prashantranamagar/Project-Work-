@@ -28,10 +28,9 @@ def index():
             upload_file.save(path_save)
             # print(upload_file)
             # image = yolo_predictions(path_save,filename)
-            image = yolo_predictions(path_save)
+            image = object_detection(path_save, filename)
             
-            # text = OCR(path_save,filename)
-            text = 'abc'
+            text = OCR(path_save,filename)
 
             return render_template('index.html',upload=True,upload_image=filename,text=text)
         return render_template('index.html',upload=False)
